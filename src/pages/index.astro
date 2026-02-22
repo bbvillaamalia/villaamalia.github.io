@@ -1,17 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig, getWhatsAppLink } from "../config/siteConfig";
+import { withBase } from "../utils/withBase";
 
 const prenotaHref = getWhatsAppLink();
 const base = import.meta.env.BASE_URL;
 
-// toglie lo slash iniziale se presente, così possiamo prefissare base correttamente
-const heroPath = siteConfig.heroImage.replace(/^\//, "");
-const heroUrl = `${base}${heroPath}`;
+const heroUrl = withBase(base, siteConfig.heroImage);
 ---
 
 <BaseLayout title="">
-  <main class="hero" style={`background-image:url(${heroUrl})`}>
+  <main class="hero" style={`background-image: url('${heroUrl}')`}>
     <div class="overlay"></div>
 
     <section class="heroInner">

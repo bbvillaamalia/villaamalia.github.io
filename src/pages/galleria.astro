@@ -4,8 +4,12 @@ import { siteConfig } from "../config/siteConfig";
 
 const base = import.meta.env.BASE_URL;
 
-// converte "/img/..." -> "<base>img/..."
-const withBase = (p) => `${base}${p.replace(/^\//, "")}`;
+// base robusto: se base è "/villaamalia.github.io" -> "/villaamalia.github.io/"
+// se è "/" -> "/"
+const baseWithSlash = base.endsWith("/") ? base : `${base}/`;
+
+// converte "/img/..." -> "<base>/img/..."
+const withBase = (p) => `${baseWithSlash}${p.replace(/^\//, "")}`;
 ---
 
 <BaseLayout title="Galleria">
