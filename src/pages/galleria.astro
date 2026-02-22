@@ -1,6 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig } from "../config/siteConfig";
+
+const base = import.meta.env.BASE_URL;
+
+// converte "/img/..." -> "<base>img/..."
+const withBase = (p) => `${base}${p.replace(/^\//, "")}`;
 ---
 
 <BaseLayout title="Galleria">
@@ -8,11 +13,14 @@ import { siteConfig } from "../config/siteConfig";
     <h1>Galleria</h1>
 
     <div class="gallery-grid">
-      {siteConfig.galleryImages.map((src) => (
-        <a class="gallery-item" href={src} data-full={src}>
-          <img src={src} alt="Foto Villa Amalia" loading="lazy" />
-        </a>
-      ))}
+      {siteConfig.galleryImages.map((src) => {
+        const full = withBase(src);
+        return (
+          <a class="gallery-item" href={full} data-full={full}>
+            <img src={full} alt="Foto Villa Amalia" loading="lazy" />
+          </a>
+        );
+      })}
     </div>
 
     <!-- Lightbox -->

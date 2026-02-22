@@ -1,11 +1,13 @@
 ---
 const { ctaHref = "#", ctaLabel = "Prenota" } = Astro.props;
 import { siteConfig } from "../config/siteConfig";
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <header class="topbar">
-  <a class="logoBox" href="/">
-    <img src={siteConfig.logoImage} alt={`Logo ${siteConfig.brand}`} />
+  <a class="logoBox" href={base}>
+    <img src={`${base.replace(/\/$/, "")}${siteConfig.logoImage}`} alt={`Logo ${siteConfig.brand}`} />
   </a>
 
   <div class="topActions">
@@ -22,15 +24,15 @@ import { siteConfig } from "../config/siteConfig";
 </header>
 
 <nav class="menu" aria-label="Menu">
-  <a href="/">Home</a>
-  <a href="/chi-siamo">Chi siamo</a>
-  <a href="/servizi">Servizi</a>
-  <a href="/galleria">Galleria</a>
-  <a href="/contatti">Contatti</a>
+  <a href={base}>Home</a>
+  <a href={`${base}chi-siamo`}>Chi siamo</a>
+  <a href={`${base}servizi`}>Servizi</a>
+  <a href={`${base}galleria`}>Galleria</a>
+  <a href={`${base}contatti`}>Contatti</a>
 </nav>
 
 <script>
   document.querySelectorAll(".menu a").forEach(a => {
-    a.addEventListener("click", () => document.body.classList.remove("menu-open"));
+    a.addEventListener("click", () => document.body.classList.remove('menu-open'));
   });
 </script>
