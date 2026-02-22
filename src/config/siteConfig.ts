@@ -8,7 +8,7 @@ export const siteConfig = {
     heroImage: "/img/entrate_1.JPG",
     logoImage: "/img/logo-villa-amalia.png",
     galleryImages: [
-      "/docs/img/gallery/paesaggio_VA.JPG",
+      "/img/gallery/paesaggio_VA.JPG",
       "/img/gallery/villa.jpg",
       "/img/gallery/piscina.jpg",
       "/img/gallery/piscina-1.jpg",
