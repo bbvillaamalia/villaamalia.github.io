@@ -3,11 +3,13 @@ const { ctaHref = "#", ctaLabel = "Prenota" } = Astro.props;
 import { siteConfig } from "../config/siteConfig";
 
 const base = import.meta.env.BASE_URL;
+const baseWithSlash = base.endsWith("/") ? base : `${base}/`;
+const cleanBase = baseWithSlash; // alias più chiaro
 ---
 
 <header class="topbar">
-  <a class="logoBox" href={base}>
-    <img src={`${base.replace(/\/$/, "")}${siteConfig.logoImage}`} alt={`Logo ${siteConfig.brand}`}>
+  <a class="logoBox" href={cleanBase}>
+    <img src={`${cleanBase}${siteConfig.logoImage.replace(/^\//, "")}`} alt={`Logo ${siteConfig.brand}`}>
   </a>
 
   <div class="topActions">
@@ -24,11 +26,11 @@ const base = import.meta.env.BASE_URL;
 </header>
 
 <nav class="menu" aria-label="Menu">
-  <a href={base}>Home</a>
-  <a href={`${base}/chi-siamo`}>Chi siamo</a>
-  <a href={`${base}/servizi`}>Servizi</a>
-  <a href={`${base}/galleria`}>Galleria</a>
-  <a href={`${base}/contatti`}>Contatti</a>
+  <a href={cleanBase}>Home</a>
+  <a href={`${cleanBase}chi-siamo`}>Chi siamo</a>
+  <a href={`${cleanBase}servizi`}>Servizi</a>
+  <a href={`${cleanBase}galleria`}>Galleria</a>
+  <a href={`${cleanBase}contatti`}>Contatti</a>
 </nav>
 
 <script>
