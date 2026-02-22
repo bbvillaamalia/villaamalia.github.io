@@ -1,0 +1,16 @@
+---
+import { siteConfig } from "../config/siteConfig";
+---
+
+<footer class="footer">
+  <div class="footerInner" style="max-width:980px;margin:0 auto;">
+    <p><strong>{siteConfig.brand}</strong></p>
+    <p>
+      Telefono: <a href={`tel:+${siteConfig.phoneIntlNoPlus}`}>+{siteConfig.phoneIntlNoPlus}</a>
+    </p>
+    <p>
+      Email: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+    </p>
+    <p style="opacity:.7;font-size:14px;">© {new Date().getFullYear()} - Tutti i diritti riservati</p>
+  </div>
+</footer>

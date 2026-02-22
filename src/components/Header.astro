@@ -1,0 +1,36 @@
+---
+const { ctaHref = "#", ctaLabel = "Prenota" } = Astro.props;
+import { siteConfig } from "../config/siteConfig";
+---
+
+<header class="topbar">
+  <a class="logoBox" href="/">
+    <img src={siteConfig.logoImage} alt={`Logo ${siteConfig.brand}`} />
+  </a>
+
+  <div class="topActions">
+    <a class="topCta" href={ctaHref} target="_blank" rel="noopener">{ctaLabel}</a>
+
+    <button
+      class="burger"
+      aria-label="Apri menu"
+      onclick="document.body.classList.toggle('menu-open')"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="menu" aria-label="Menu">
+  <a href="/">Home</a>
+  <a href="/chi-siamo">Chi siamo</a>
+  <a href="/servizi">Servizi</a>
+  <a href="/galleria">Galleria</a>
+  <a href="/contatti">Contatti</a>
+</nav>
+
+<script>
+  document.querySelectorAll(".menu a").forEach(a => {
+    a.addEventListener("click", () => document.body.classList.remove("menu-open"));
+  });
+</script>

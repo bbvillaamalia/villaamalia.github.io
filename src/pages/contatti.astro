@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig, getWhatsAppLink } from "../config/siteConfig";
+
+const wa = getWhatsAppLink();
+const mapsEmbed = "https://www.google.com/maps?q=40.8971782,14.7733813&output=embed";
+
+const mailto = `mailto:${siteConfig.email}?subject=${encodeURIComponent("Richiesta prenotazione - Villa Amalia")}&body=${encodeURIComponent("Ciao! Vorrei informazioni su disponibilità e prezzi. Grazie!")}`;
+---
+
+<BaseLayout title="Contatti">
+  <main class="page">
+    <h1>Contatti</h1>
+    <p>Scrivici su WhatsApp oppure via email.</p>
+
+    <style>
+      .cards{display:grid; gap:14px; margin-top:18px;}
+      .card{
+        border:1px solid rgba(255,255,255,.14);
+        background: rgba(255,255,255,.06);
+        border-radius:14px;
+        padding:16px;
+      }
+      .btnRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px;}
+      .btn{
+        display:inline-block;
+        text-decoration:none;
+        padding:10px 12px;
+        border-radius:999px;
+        border:1px solid rgba(255,255,255,.18);
+        background: rgba(0,0,0,.25);
+        font-weight:800;
+      }
+      iframe{width:100%; height:320px; border:0; border-radius:14px; margin-top:14px;}
+    </style>
+
+    <div class="cards">
+      <div class="card">
+        <strong>WhatsApp</strong>
+        <div class="btnRow">
+          <a class="btn" href={wa} target="_blank" rel="noopener">Apri chat</a>
+          <a class="btn" href={`tel:+${siteConfig.phoneIntlNoPlus}`}>Chiama</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <strong>Email</strong>
+        <div class="btnRow">
+          <a class="btn" href={mailto}>Scrivi email</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <strong>Dove siamo</strong>
+        <iframe
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src={mapsEmbed}
+        ></iframe>
+        <div class="btnRow" style="margin-top:10px;">
+        <a
+        class="btn"
+        href="https://www.google.com/maps/place/Villa+Amalia/@40.8971822,14.7708064,17z/data=!3m1!4b1!4m9!3m8!1s0x133bcc391c2f0fc5:0xe11c2546d8801d78!5m2!4m1!1i2!8m2!3d40.8971782!4d14.7733813!16s%2Fg%2F11g3gj1tkp"
+        target="_blank"
+        rel="noopener"
+        >
+        Apri su Google Maps
+        </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
