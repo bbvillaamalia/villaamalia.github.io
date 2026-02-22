@@ -2,7 +2,7 @@ export const siteConfig = {
     brand: "Villa Amalia",
     city: "Avellino",
     phoneIntlNoPlus: "393318037628",
-    email: "info@villaamalia.it",
+    email: "bbvillaamalia@gmail.com",
     addressQuery: "Avellino",
     whatsappPrefill: "Ciao! Vorrei informazioni per una prenotazione a Villa Amalia.",
     heroImage: "/img/entrate_1.JPG",
